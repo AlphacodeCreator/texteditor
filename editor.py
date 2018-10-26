@@ -1,5 +1,6 @@
 #-*-coding:iso-8859-1-*-
 from tkinter import *
+from random import randint
 from tkinter import ttk,messagebox,filedialog
 import sys,math as mh
 tk1=Tk()
@@ -37,6 +38,224 @@ Scrollery.config(command=texted.yview)
 texted.place(x=20,y=1)
 F4andESC=Label(master,text="Man beendet den Texteditor, indem man F4 drückt, während man ihn mit \"esc\" in Normalgröße macht.")
 master.attributes("-fullscreen", True)
+def exitask():
+    reda=open("exask.txt","r").readline()
+    tki=Tk()
+    tki.title("Ausgangsfrage")
+    tki.geometry("300x150")
+    Label(tki,text="Wollen sie gefragt werden,\nob das Programm geschlossen wird?").pack()
+    def an():
+        global z
+        oow=open("exask.txt","w")
+        oow.write("an")
+        oow.close()
+        lab.configure(text="an")
+        z=1
+    def aus():
+        global z
+        oow=open("exask.txt","w")
+        oow.write("aus")
+        lab.configure(text="aus")
+        z=0
+        oow.close()
+    lab=Label(tki)
+    lab.configure(text=reda)
+    lab.pack(side=BOTTOM)
+    onB=Button(tki,text="An",command=an,width=5).pack(anchor=W)
+    offB=Button(tki,text="Aus",command=aus,width=5).pack(anchor=W)
+def mathErrorShow():
+    error=Tk()
+    error.title("Fehler")
+    error.geometry("300x120")
+    Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
+def rechner_attribut_hinzufügung():
+    try:
+        spectk.destroy()
+    except:
+        pass
+    zutk=Tk()
+    zutk.title("Matheinfo")
+    zutk.geometry("300x120")
+    Label(zutk,text="Bei den 1-Attribut-Funktionen:\nArcussinus und Arcuscosinus\nmuss man eine Zahl zwischen\n1 und 0 eingeben.",justify=LEFT).place(x=1,y=1)
+    def ok():
+        try:
+            zutk.destroy()
+        except:
+            pass
+        rechner_hinzu_Tk=Tk()
+        rechner_hinzu_Tk.title("Rechneratribute")
+        rechner_hinzu_Tk.geometry("650x350")
+        Message(rechner_hinzu_Tk,text="Rechner:",fg="lightblue",bg="Orange",font=("Segoe Print",16),width=200).pack()
+        Label(rechner_hinzu_Tk,text="Dies ist ein ausfürlicherer Rechner.").pack(side=BOTTOM)
+        Label(rechner_hinzu_Tk,text="1-Attribut-Funktionen: ").place(x=20,y=60)
+        Label(rechner_hinzu_Tk,text="2-Attribut-Funktionen: ").place(x=250,y=60)
+        onattrfunk=Entry(rechner_hinzu_Tk)
+        twattrfunk=Entry(rechner_hinzu_Tk)
+        twattrfunk_=Entry(rechner_hinzu_Tk)
+        oneaus=Label(rechner_hinzu_Tk,text="Ergebnis: ")
+        twoaus=Label(rechner_hinzu_Tk,text="Ergebnis: ")
+        specout=Label(rechner_hinzu_Tk,text="Besondere Ausgaben: ")
+        def SIN():
+            oneattr=onattrfunk.get()
+            try:
+                oneattr=float(oneattr)
+                sinus=mh.sin(oneattr)
+                oneaus.configure(text=sinus)
+            except:
+                mathErrorShow()            
+        oneaus.place(x=80,y=120)
+        sinusbut=Button(rechner_hinzu_Tk,text="Sinus",command=SIN).place(x=20,y=150)
+        onattrfunk.place(x=80,y=90)
+        def GAMMA():
+            oneattr=onattrfunk.get()
+            try:
+                oneattr=float(oneattr)
+                gammaz=mh.gamma(oneattr)
+                oneaus.configure(text=gammaz)
+            except:
+                mathErrorShow()
+        gammabut=Button(rechner_hinzu_Tk,text="gamma",command=GAMMA).place(x=60,y=150)
+        def ROOT():
+            oneattr=onattrfunk.get()
+            try:
+                oneattr=float(oneattr)
+                try:
+                    root=mh.sqrt(oneattr)
+                    oneaus.configure(text=root)
+                except:
+                    oneaus.configure(text="Nicht Reelle Zahl (i)")
+                    pass
+            except:
+                mathErrorShow()
+            
+        rootbut=Button(rechner_hinzu_Tk,text="Quadratwurzel",command=ROOT).place(x=113,y=150)
+        def COS():
+            oneattr=onattrfunk.get()
+            try:
+                oneattr=float(oneattr)
+                cosi=mh.cos(oneattr)
+                oneaus.configure(text=cosi)
+            except:
+                mathErrorShow()                
+        coibut=Button(rechner_hinzu_Tk,text="Cosinus",command=COS).place(x=20,y=176)
+        def TAN():
+            oneattr=onattrfunk.get()
+            try:
+                oneattr=float(oneattr)
+                tang=mh.tan(oneattr)
+                oneaus.configure(text=tang)
+            except:
+                mathErrorShow()
+            
+        tanbu=Button(rechner_hinzu_Tk,text="Tangens",command=TAN).place(x=74,y=176)
+        def ASIN():
+            oneattr=onattrfunk.get()
+            try:
+                oneattr=float(oneattr)
+                asinus=mh.asin(oneattr)
+                oneaus.configure(text=asinus)
+            except:
+                mathErrorShow()
+        arcussinusbut=Button(rechner_hinzu_Tk,text="Arcussinus",command=ASIN).place(x=20,y=202)
+        def ACOS():
+            oneattr=onattrfunk.get()
+            try:
+                oneattr=float(oneattr)
+                acosinus=mh.acos(oneattr)
+                oneaus.configure(text=acosinus)
+            except:
+                mathErrorShow()
+        arcussinusbut=Button(rechner_hinzu_Tk,text="Arcuscosinus",command=ACOS).place(x=88,y=202)
+        def ATAN():
+            oneattr=onattrfunk.get()
+            try:
+                oneattr=float(oneattr)
+                atang=mh.atan(oneattr)
+                oneaus.configure(text=atang)
+            except:
+                mathErrorShow()
+        arcustangens=Button(rechner_hinzu_Tk,text="Arcustangens",command=ATAN).place(x=20,y=228)
+        def RAND():
+            z1=twattrfunk.get()
+            z2=twattrfunk_.get()
+            try:
+                z1_=int(z1)
+                z2_=int(z2)
+                ran=randint(z1_,z2_)
+                twoaus.configure(text=ran)
+            except:
+                mathErrorShow()
+        Zufall=Button(rechner_hinzu_Tk,text="Zufallszahl von-bis",command=RAND).place(x=220,y=228)
+        def ADD():
+            z1=twattrfunk.get()
+            z2=twattrfunk_.get()
+            try:
+                z1_=float(z1)
+                z2_=float(z2)
+                erg=float(z1_+z2_)
+                twoaus.configure(text=erg)
+            except:
+                twoaus.configure(text="sie müssen eine Zahl eingeben")
+        Addbut=Button(rechner_hinzu_Tk,text="Addition",command=ADD).place(x=220,y=150)
+        def SUB():
+            z1=twattrfunk.get()
+            z2=twattrfunk_.get()
+            try:
+                erg=float(float(z1)-float(z2))
+                twoaus.configure(text=erg)
+            except:
+                twoaus.configure(text="sie müssen eine Zahl eingeben")
+        def MULT():
+            z1=twattrfunk.get()
+            z2=twattrfunk_.get()
+            try:
+                erg=float(float(z1)*float(z2))
+                twoaus.configure(text=erg)
+            except:
+                twoaus.configure(text="sie müssen eine Zahl eingeben")
+        Multbut=Button(rechner_hinzu_Tk,text="Multiplikation",command=MULT).place(x=220,y=177)
+        Subbut=Button(rechner_hinzu_Tk,text="Subtraktion",command=SUB).place(x=278,y=150)
+        def DIV():
+            z1=twattrfunk.get()
+            z2=twattrfunk_.get()
+            try:
+                erg=float(float(z1)/float(z2))
+                twoaus.configure(text=erg)
+            except ZeroDivisionError:
+                twoaus.configure(text="sie dürfen nicht durch 0 teilen")
+            except:
+                twoaus.configure(text="sie müssen eine Zahl eingeben")
+        divbut=Button(rechner_hinzu_Tk,text="Division",command=DIV).place(x=306,y=177)
+        def EXP():
+            z1=twattrfunk.get()
+            z2=twattrfunk_.get()
+            try:
+                erg=float(float(z1)**float(z2))
+                twoaus.configure(text=erg)
+            except:
+                twoaus.configure(text="sie müssen eine Zahl eingeben")
+        expbut=Button(rechner_hinzu_Tk,text="Exponentialrechnung",command=EXP).place(x=220,y=203)
+        def pi():
+            specout.configure(text="3.141592653589793238464338328")
+        pibut=Button(rechner_hinzu_Tk,text="PI",command=pi).place(x=420,y=150)
+        def eul():
+            specout.configure(text=mh.e)
+
+        pibut=Button(rechner_hinzu_Tk,text="Eulersche-Zahl",command=eul).place(x=441,y=150)
+        specout.place(x=400,y=120)
+        twattrfunk.place(x=220,y=90)
+        twattrfunk_.place(x=220,y=113)
+        twoaus.place(x=220,y=132)
+    okbut=Button(zutk,text="OK",command=ok,width=10).place(x=115,y=95)
+def specialfunk():
+    spectk=Tk()
+    spectk.title("Special-Fuktions")
+    spectk.geometry("500x350")
+    exas=Button(spectk,text="Ausführlicher Rechner",command=rechner_attribut_hinzufügung).place(x=2,y=3)
+    exas=Button(spectk,text="Ausgangsfrage",command=exitask).place(x=2,y=29)
+Label(master,text="Beim Rechner könnte es \npassieren, dass die Zahl so \nhoch wird, dass sie nicht \nangezeigt werden kann.",justify=LEFT).place(x=1160,y=615)
+speciB=Button(master,text="SPECIAL",command=specialfunk).place(x=1311,y=660)
+
 def About():
     info=Tk()
     info.title("Info")
@@ -257,6 +476,10 @@ filemenu = Menu(menu)
 menu.add_cascade(label="File", menu=filemenu)
 filemenu.add_command(label="SAVE  (STRG-S)", command=sav)
 filemenu.add_command(label="SEARCH (STRG-TAB)", command=sear)
+specialmenu=Menu(menu)
+menu.add_cascade(label="Special", menu=specialmenu)
+specialmenu.add_command(label="Rechner",command=rechner_attribut_hinzufügung)
+specialmenu.add_command(label="Exitask",command=exitask)
 helpmenu = Menu(menu)
 menu.add_cascade(label="Help", menu=helpmenu)
 helpmenu.add_command(label="Hauptfunktion",command=hfunk)
@@ -377,236 +600,6 @@ if oo=="an":
     z=1
 else:
     z=0
-
-def specialfunk():
-    spectk=Tk()
-    spectk.title("Special-Fuktions")
-    spectk.geometry("500x350")
-    def rechner_attribut_hinzufügung():
-        try:
-            spectk.destroy()
-        except:
-            pass
-        zutk=Tk()
-        zutk.title("Matheinfo")
-        zutk.geometry("300x120")
-        Label(zutk,text="Bei den 1-Attribut-Funktionen:\nArcussinus und Arcuscosinus\nmuss man eine Zahl zwischen\n1 und 0 eingeben.",justify=LEFT).place(x=1,y=1)
-        def ok():
-            try:
-                zutk.destroy()
-            except:
-                pass
-            rechner_hinzu_Tk=Tk()
-            rechner_hinzu_Tk.title("Rechneratribute")
-            rechner_hinzu_Tk.geometry("650x350")
-            Message(rechner_hinzu_Tk,text="Rechner:",fg="lightblue",bg="Orange",font=("Segoe Print",16),width=200).pack()
-            Label(rechner_hinzu_Tk,text="Dies ist ein ausfürlicherer Rechner.").pack(side=BOTTOM)
-            Label(rechner_hinzu_Tk,text="1-Attribut-Funktionen: ").place(x=20,y=60)
-            Label(rechner_hinzu_Tk,text="2-Attribut-Funktionen: ").place(x=250,y=60)
-            onattrfunk=Entry(rechner_hinzu_Tk)
-            twattrfunk=Entry(rechner_hinzu_Tk)
-            twattrfunk_=Entry(rechner_hinzu_Tk)
-            oneaus=Label(rechner_hinzu_Tk,text="Ergebnis: ")
-            twoaus=Label(rechner_hinzu_Tk,text="Ergebnis: ")
-            specout=Label(rechner_hinzu_Tk,text="Besondere Ausgaben: ")
-            def SIN():
-                oneattr=onattrfunk.get()
-                try:
-                    oneattr=float(oneattr)
-                except:
-                    return
-                sinus=mh.sin(oneattr)
-                oneaus.configure(text=sinus)
-            oneaus.place(x=80,y=120)
-            sinusbut=Button(rechner_hinzu_Tk,text="Sinus",command=SIN).place(x=20,y=150)
-            onattrfunk.place(x=80,y=90)
-            def GAMMA():
-                oneattr=onattrfunk.get()
-                try:
-                    oneattr=float(oneattr)
-                    gammaz=mh.gamma(oneattr)
-                    oneaus.configure(text=gammaz)
-                except:
-                    error=Tk()
-                    error.title("Fehler")
-                    error.geometry("300x120")
-                    Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
-            gammabut=Button(rechner_hinzu_Tk,text="gamma",command=GAMMA).place(x=60,y=150)
-            def ROOT():
-                oneattr=onattrfunk.get()
-                try:
-                    oneattr=float(oneattr)
-                except:
-                    return
-                try:
-                    root=mh.sqrt(oneattr)
-                    oneaus.configure(text=root)
-                except:
-                    oneaus.configure(text="Nicht Reelle Zahl (i)")
-                    pass
-            rootbut=Button(rechner_hinzu_Tk,text="Quadratwurzel",command=ROOT).place(x=113,y=150)
-            def COS():
-                oneattr=onattrfunk.get()
-                try:
-                    oneattr=float(oneattr)
-                    cosi=mh.cos(oneattr)
-                    oneaus.configure(text=cosi)
-                except:
-                    error=Tk()
-                    error.title("Fehler")
-                    error.geometry("300x120")
-                    Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
-                
-            coibut=Button(rechner_hinzu_Tk,text="Cosinus",command=COS).place(x=20,y=176)
-            def TAN():
-                oneattr=onattrfunk.get()
-                try:
-                    oneattr=float(oneattr)
-                except:
-                    error=Tk()
-                    error.title("Fehler")
-                    error.geometry("300x120")
-                    Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
-                tang=mh.tan(oneattr)
-                oneaus.configure(text=tang)
-            tanbu=Button(rechner_hinzu_Tk,text="Tangens",command=TAN).place(x=74,y=176)
-            def ASIN():
-                oneattr=onattrfunk.get()
-                try:
-                    oneattr=float(oneattr)
-                    asinus=mh.asin(oneattr)
-                    oneaus.configure(text=asinus)
-                except:
-                    error=Tk()
-                    error.title("Fehler")
-                    error.geometry("300x120")
-                    Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
-                
-            arcussinusbut=Button(rechner_hinzu_Tk,text="Arcussinus",command=ASIN).place(x=20,y=202)
-            def ACOS():
-                oneattr=onattrfunk.get()
-                try:
-                    oneattr=float(oneattr)
-                    acosinus=mh.acos(oneattr)
-                    oneaus.configure(text=acosinus)
-                except:
-                    error=Tk()
-                    error.title("Fehler")
-                    error.geometry("300x120")
-                    Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
-            arcussinusbut=Button(rechner_hinzu_Tk,text="Arcuscosinus",command=ACOS).place(x=88,y=202)
-            def ATAN():
-                oneattr=onattrfunk.get()
-                try:
-                    oneattr=float(oneattr)
-                except:
-                    error=Tk()
-                    error.title("Fehler")
-                    error.geometry("300x120")
-                    Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
-                atang=mh.atan(oneattr)
-                oneaus.configure(text=atang)
-            arcustangens=Button(rechner_hinzu_Tk,text="Arcustangens",command=ATAN).place(x=20,y=228)
-            def RAND():
-                oneattr=onattrfunk.get()
-                try:
-                    oneattr=float(oneattr)
-                except:
-                    error=Tk()
-                    error.title("Fehler")
-                    error.geometry("300x120")
-                    Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
-                atang=mh.atan(oneattr)
-                oneaus.configure(text=atang)
-            def ADD():
-                z1=twattrfunk.get()
-                z2=twattrfunk_.get()
-                try:
-                    z1_=float(z1)
-                    z2_=float(z2)
-                    erg=float(z1_+z2_)
-                    twoaus.configure(text=erg)
-                except:
-                    twoaus.configure(text="sie müssen eine Zahl eingeben")
-            Addbut=Button(rechner_hinzu_Tk,text="Addition",command=ADD).place(x=220,y=150)
-            def SUB():
-                z1=twattrfunk.get()
-                z2=twattrfunk_.get()
-                try:
-                    erg=float(float(z1)-float(z2))
-                    twoaus.configure(text=erg)
-                except:
-                    twoaus.configure(text="sie müssen eine Zahl eingeben")
-            def MULT():
-                z1=twattrfunk.get()
-                z2=twattrfunk_.get()
-                try:
-                    erg=float(float(z1)*float(z2))
-                    twoaus.configure(text=erg)
-                except:
-                    twoaus.configure(text="sie müssen eine Zahl eingeben")
-            Multbut=Button(rechner_hinzu_Tk,text="Multiplikation",command=MULT).place(x=220,y=177)
-            Subbut=Button(rechner_hinzu_Tk,text="Subtraktion",command=SUB).place(x=278,y=150)
-            def DIV():
-                z1=twattrfunk.get()
-                z2=twattrfunk_.get()
-                try:
-                    erg=float(float(z1)/float(z2))
-                    twoaus.configure(text=erg)
-                except ZeroDivisionError:
-                    twoaus.configure(text="sie dürfen nicht durch 0 teilen")
-                except:
-                    twoaus.configure(text="sie müssen eine Zahl eingeben")
-            divbut=Button(rechner_hinzu_Tk,text="Division",command=DIV).place(x=306,y=177)
-            def EXP():
-                z1=twattrfunk.get()
-                z2=twattrfunk_.get()
-                try:
-                    erg=float(float(z1)**float(z2))
-                    twoaus.configure(text=erg)
-                except:
-                    twoaus.configure(text="sie müssen eine Zahl eingeben")
-            expbut=Button(rechner_hinzu_Tk,text="Exponentialrechnung",command=EXP).place(x=220,y=203)
-            def pi():
-                specout.configure(text="3.141592653589793238464338328")
-            pibut=Button(rechner_hinzu_Tk,text="PI",command=pi).place(x=420,y=150)
-            def eul():
-                specout.configure(text=mh.e)
-            pibut=Button(rechner_hinzu_Tk,text="Eulersche-Zahl",command=eul).place(x=441,y=150)
-            specout.place(x=400,y=120)
-            twattrfunk.place(x=220,y=90)
-            twattrfunk_.place(x=220,y=113)
-            twoaus.place(x=220,y=132)
-        okbut=Button(zutk,text="OK",command=ok,width=10).place(x=115,y=95)
-    rechn_add=Button(spectk,text="Ausfürlicher Rechner",command=rechner_attribut_hinzufügung).place(x=2,y=2)
-    def exitask():
-        reda=open("exask.txt","r").readline()
-        tki=Tk()
-        tki.title("Ausgangsfrage")
-        tki.geometry("300x150")
-        Label(tki,text="Wollen sie gefragt werden,\nob das Programm geschlossen wird?").pack()
-        def an():
-            global z
-            oow=open("exask.txt","w")
-            oow.write("an")
-            oow.close()
-            lab.configure(text="an")
-            z=1
-        def aus():
-            global z
-            oow=open("exask.txt","w")
-            oow.write("aus")
-            lab.configure(text="aus")
-            z=0
-            oow.close()
-        lab=Label(tki)
-        lab.configure(text=reda)
-        lab.pack(side=BOTTOM)
-        onB=Button(tki,text="An",command=an,width=5).pack(anchor=W)
-        offB=Button(tki,text="Aus",command=aus,width=5).pack(anchor=W)
-    exas=Button(spectk,text="Ausgangsfrage",command=exitask).place(x=2,y=29)
-Label(master,text="Beim Rechner könnte es \npassieren, dass die Zahl so \nhoch wird, dass sie nicht \nangezeigt werden kann.",justify=LEFT).place(x=1160,y=615)
-speciB=Button(master,text="SPECIAL",command=specialfunk).place(x=1311,y=660)
 def closeask():
     if z==1:
         r=messagebox.askyesno("Beenden","Soll das Programm\nwirklich geschlossen werden?",icon="warning")
