@@ -2,13 +2,11 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-import easygui as eg
 import sys
 import math as mh
-import os
-#import turtle
-################
-file=eg.fileopenbox(msg="Which Data you want to edit?",title="",default="C:/Users/Privat/Desktop/")
+from tkinter import filedialog
+tk1=Tk()
+file=filedialog.askopenfilename(initialdir = "/",title = "choose file")
 if file==None:
     sys.exit()
 try:
@@ -27,7 +25,6 @@ grö=""
 for grrr in wgr:
     grö=grö+str(grrr)
 master.geometry(grö)
-master.iconbitmap("textico.ico")
 höhe=ykor-721
 breit=xkor-1226
 Scrollery=Scrollbar(master,bg="green",activebackground="lightgreen",bd=5)
@@ -42,7 +39,6 @@ def About():
     info=Tk()
     info.title("Info")
     info.geometry("700x400+0+0")
-    info.iconbitmap("textico.ico")
     def abkurinfo():
         abki=Tk()
         abki.title("Wie verwendet man das Abkürzungs Verzeichnis?")
@@ -54,7 +50,6 @@ def sear():
     searth=Tk()
     searth.title("Suchen nach")
     searth.geometry("700x450")
-    searth.iconbitmap("textico.ico")
     Message(searth,text="Suchen nach:",fg="lightblue",bg="Orange",font=("Segoe Print",16),width=200).pack()
     suw=Entry(searth)
     eing=Entry(searth)
@@ -73,7 +68,6 @@ def sear():
             mistake=Tk()
             mistake.title("Fehlermeldung")
             mistake.geometry("300x120")
-            mistake.iconbitmap("textico.ico")
             suwh=suw.get()
             Label(mistake,text="%s Konnte nicht gelöscht werden."%suwh,fg="red").pack()
     def ersetz():
@@ -102,7 +96,6 @@ def sear():
             mistake=Tk()
             mistake.title("Fehlermeldung")
             mistake.geometry("300x120")
-            mistake.iconbitmap("textico.ico")
             suwh=suw.get()
             Label(mistake,text="%s Konnte nicht ersetzt werden."%suwh,fg="red").pack()
     rete=texted.get("1.0","end-1c")
@@ -119,7 +112,6 @@ def sav():
     savask=Tk()
     savask.title("")
     savask.geometry("170x80+500+380")
-    savask.iconbitmap("ask.ico")
     bild=PhotoImage(file="shutdown.png")
     lab=Label(savask,text="???",fg="red",bg="lightgreen",font=("Times New Roman",16))
     lab.place(x=130,y=5)
@@ -140,7 +132,6 @@ def savdown(event):
     savask=Tk()
     savask.title("")
     savask.geometry("170x80+500+380")
-    savask.iconbitmap("ask.ico")
     bild=PhotoImage(file="shutdown.png")
     lab=Label(savask,text="???",fg="red",bg="lightgreen",font=("Times New Roman",16))
     lab.place(x=130,y=5)
@@ -162,7 +153,6 @@ def seardown(event):
     searth=Tk()
     searth.title("Suchen nach")
     searth.geometry("700x450")
-    searth.iconbitmap("textico.ico")
     Message(searth,text="Suchen nach:",fg="lightblue",bg="Orange",font=("Segoe Print",16),width=200).pack()
     suw=Entry(searth)
     eing=Entry(searth)
@@ -181,7 +171,6 @@ def seardown(event):
             mistake=Tk()
             mistake.title("Fehlermeldung")
             mistake.geometry("300x120")
-            mistake.iconbitmap("textico.ico")
             suwh=suw.get()
             Label(mistake,text="%s Konnte nicht gelöscht werden."%suwh,fg="red").pack()
     def ersetz():
@@ -210,7 +199,6 @@ def seardown(event):
             mistake=Tk()
             mistake.title("Fehlermeldung")
             mistake.geometry("300x120")
-            mistake.iconbitmap("textico.ico")
             suwh=suw.get()
             Label(mistake,text="%s Konnte nicht ersetzt werden."%suwh,fg="red").pack()
     rete=texted.get("1.0","end-1c")
@@ -229,7 +217,6 @@ def hfunk():
     maintk=Tk()
     maintk.title("Textinfo")
     maintk.geometry("683x483+0+0")
-    maintk.iconbitmap("textico.ico")
     Label(maintk,text="""Wenn sie wissen wollen, wie man das soeben geschriebene speichert,\ndann gehen sie ins Menü auf das \"file\" Attribut.
 Wenn sie darauf klicken, kommt eine Auswahl, bei welcher sie\nauf SAVE klicken müssen. Wenn sie das getahen haben, dann haben sie den Inhalt der Textdatei\nnachhaltig auf das gesetzt, was sie grade geschrieben haben.""",justify=LEFT).place(x=1,y=1)
 def zeiläng():
@@ -237,7 +224,6 @@ def zeiläng():
     zumal=Tk()
     zumal.title("Wie viele Zeichen hat mein Text")
     zumal.geometry("500x300")
-    zumal.iconbitmap("textico.ico")
     Message(zumal,text="Zeichen:",fg="orange",bg="green",font=("Arial",18),width=100).pack()
     Label(zumal,text="Wörter: ").place(x=5,y=48)
     Label(zumal,text="Alle: ").place(x=100,y=48)
@@ -610,7 +596,7 @@ def such():
         bedeut.configure(text="(nicht vorhanden)")
 bedeut.place(x=1213,y=290)
 suchb=Button(master,text="Nach Abkürzung suchen",command=such).place(x=1200,y=330)
-wörtby=open("C:\\Users\\Privat\\Desktop\\wörter.txt","r").readlines()
+wörtby=open("wort.txt","r").readlines()
 tzuhg=""
 for tzuhgp in wörtby:
     tzuhg=tzuhg+tzuhgp
@@ -661,7 +647,7 @@ del(none[-1])
 txtc="".join(none)
 pfad.configure(text=txtc)
 pfad.place(x=1152,y=520)
-reda=open("C:\\Users\\Privat\\Desktop\\exask.txt","r").readline()
+reda=open("exask.txt","r").readline()
 z=int()
 if reda=="an":
     z=1
@@ -671,7 +657,6 @@ def specialfunk():
     spectk=Tk()
     spectk.title("Special-Fuktions")
     spectk.geometry("500x350")
-    spectk.iconbitmap("textico.ico")
     def rechner_attribut_hinzufügung():
         try:
             spectk.destroy()
@@ -689,7 +674,6 @@ def specialfunk():
             rechner_hinzu_Tk=Tk()
             rechner_hinzu_Tk.title("Rechneratribute")
             rechner_hinzu_Tk.geometry("650x350")
-            rechner_hinzu_Tk.iconbitmap("textico.ico")
             Message(rechner_hinzu_Tk,text="Rechner:",fg="lightblue",bg="Orange",font=("Segoe Print",16),width=200).pack()
             Label(rechner_hinzu_Tk,text="Dies ist ein ausfürlicherer Rechner.").pack(side=BOTTOM)
             Label(rechner_hinzu_Tk,text="1-Attribut-Funktionen: ").place(x=20,y=60)
@@ -721,7 +705,6 @@ def specialfunk():
                     error=Tk()
                     error.title("Fehler")
                     error.geometry("300x120")
-                    error.iconbitmap("textico.ico")
                     Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
             gammabut=Button(rechner_hinzu_Tk,text="gamma",command=GAMMA).place(x=60,y=150)
             def ROOT():
@@ -747,7 +730,6 @@ def specialfunk():
                     error=Tk()
                     error.title("Fehler")
                     error.geometry("300x120")
-                    error.iconbitmap("textico.ico")
                     Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
                 
             coibut=Button(rechner_hinzu_Tk,text="Cosinus",command=COS).place(x=20,y=176)
@@ -759,7 +741,6 @@ def specialfunk():
                     error=Tk()
                     error.title("Fehler")
                     error.geometry("300x120")
-                    error.iconbitmap("textico.ico")
                     Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
                 tang=mh.tan(oneattr)
                 oneaus.configure(text=tang)
@@ -774,7 +755,6 @@ def specialfunk():
                     error=Tk()
                     error.title("Fehler")
                     error.geometry("300x120")
-                    error.iconbitmap("textico.ico")
                     Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
                 
             arcussinusbut=Button(rechner_hinzu_Tk,text="Arcussinus",command=ASIN).place(x=20,y=202)
@@ -788,7 +768,6 @@ def specialfunk():
                     error=Tk()
                     error.title("Fehler")
                     error.geometry("300x120")
-                    error.iconbitmap("textico.ico")
                     Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
             arcussinusbut=Button(rechner_hinzu_Tk,text="Arcuscosinus",command=ACOS).place(x=88,y=202)
             def ATAN():
@@ -799,7 +778,6 @@ def specialfunk():
                     error=Tk()
                     error.title("Fehler")
                     error.geometry("300x120")
-                    error.iconbitmap("textico.ico")
                     Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
                 atang=mh.atan(oneattr)
                 oneaus.configure(text=atang)
@@ -812,7 +790,6 @@ def specialfunk():
                     error=Tk()
                     error.title("Fehler")
                     error.geometry("300x120")
-                    error.iconbitmap("textico.ico")
                     Label(error,text="konnte nicht berechnet werden.",fg="red").pack()
                 atang=mh.atan(oneattr)
                 oneaus.configure(text=atang)
@@ -878,7 +855,7 @@ def specialfunk():
         okbut=Button(zutk,text="OK",command=ok,width=10).place(x=115,y=95)
     rechn_add=Button(spectk,text="Ausfürlicher Rechner",command=rechner_attribut_hinzufügung).place(x=2,y=2)
     def exitask():
-        oo=open("C:\\Users\\Privat\\Desktop\\exask.txt","r").readline()
+        oo=open("exask.txt","r").readline()
         if oo=="an":
             a=1
             z=a
@@ -912,33 +889,6 @@ def specialfunk():
         lab.pack(side=BOTTOM)
         z=a
     exas=Button(spectk,text="Ausgangsfrage",command=exitask).place(x=2,y=29)
-    #def funktmana():
-        #spectk.destroy()
-        #funktk=Tk()
-        #funktk.title("Funktionmanager")
-        #funktk.geometry("400x145")
-        #def ydef():
-        #    ydeftk=Tk()
-        #    ydeftk.title("y-Funktion")
-        #    ydeftk.geometry("500x350")
-        #    Label(ydeftk,text="y:").place(x=1,y=1)
-        #    formel=Text(ydeftk,height=20,width=50,bd=0)
-        #    def yformelst():
-        #        formtext=formel.get("1.0",END)
-        #        r=Tk()
-        #        Label(r,text=formtext).pack()
-        #    start=Button(ydeftk,text="Start",command=yformelst).place(x=463,y=3)
-        #    formel.place(x=23,y=4)
-        #def xdef():
-        #    xdeftk=Tk()
-        #    xdeftk.title("x-Funktion")
-        #    xdeftk.geometry("1000x670")
-        #    
-        #Label(funktk,text="wollen sie x oder y definieren?",justify=LEFT).pack()
-        #butx=Button(funktk,text="x definieren",command=xdef).place(x=40,y=40)
-        #buty=Button(funktk,text="y definieren",command=ydef).place(x=275,y=40)
-        #funktk.mainloop()
-    #funkt=Button(spectk,text="Funktionsmanager",command=funktmana).place(x=2,y=56)
 Label(master,text="Beim Rechner könnte es \npassieren, dass die Zahl so \nhoch wird, dass sie nicht \nangezeigt werden kann.",justify=LEFT).place(x=1160,y=615)
 speciB=Button(master,text="SPECIAL",command=specialfunk).place(x=1311,y=660)
 def closeask():
