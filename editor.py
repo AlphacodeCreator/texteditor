@@ -7,6 +7,7 @@ import math as mh
 from tkinter import filedialog
 tk1=Tk()
 file=filedialog.askopenfilename(initialdir = "/",title = "choose file")
+tk1.destroy()
 if file==None:
     sys.exit()
 try:
