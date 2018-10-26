@@ -1,12 +1,13 @@
 #-*-coding:iso-8859-1-*-
 from tkinter import *
-from tkinter import ttk
-from tkinter import messagebox
-import sys
-import math as mh
-from tkinter import filedialog
+from tkinter import ttk,messagebox,filedialog
+import sys,math as mh
 tk1=Tk()
+tk1.minsize(width=300,height=140)
+tk1.maxsize(width=300,height=140)
 file=filedialog.askopenfilename(initialdir = "/",title = "choose file")
+if file=="":
+    sys.exit()
 tk1.destroy()
 if file==None:
     sys.exit()
