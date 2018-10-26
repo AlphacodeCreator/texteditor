@@ -31,11 +31,11 @@ höhe=ykor-721
 breit=xkor-1226
 Scrollery=Scrollbar(master,bg="green",activebackground="lightgreen",bd=5)
 texted=Text(master,width=breit,height=höhe,yscrollcommand=Scrollery.set,bd=1)
-Scrollery.pack(side=LEFT,fill=Y)
+Scrollery.grid(padx=1,pady=1,sticky='NS',ipady=336,rowspan=4,column=4)
 texted.insert(INSERT,fitext)
 Scrollery.config(command=texted.yview)
 texted.place(x=20,y=1)
-Label(master,text="Man beendet den Texteditor, indem man F4 drückt, während man ihn mit \"esc\" in normalgröße macht.").place(x=350,y=730)
+F4andESC=Label(master,text="Man beendet den Texteditor, indem man F4 drückt, während man ihn mit \"esc\" in Normalgröße macht.")
 master.attributes("-fullscreen", True)
 def About():
     info=Tk()
@@ -114,7 +114,6 @@ def sav():
     savask=Tk()
     savask.title("")
     savask.geometry("170x80+500+380")
-    bild=PhotoImage(file="shutdown.png")
     lab=Label(savask,text="???",fg="red",bg="lightgreen",font=("Times New Roman",16))
     lab.place(x=130,y=5)
     Label(savask,text="soll wirklich\ngespeichert werden?",justify=LEFT).place(x=5,y=2)
@@ -134,7 +133,6 @@ def savdown(event):
     savask=Tk()
     savask.title("")
     savask.geometry("170x80+500+380")
-    bild=PhotoImage(file="shutdown.png")
     lab=Label(savask,text="???",fg="red",bg="lightgreen",font=("Times New Roman",16))
     lab.place(x=130,y=5)
     Label(savask,text="soll wirklich\ngespeichert werden?",justify=LEFT).place(x=5,y=2)
@@ -322,282 +320,6 @@ def ho():
     except:
         zerg.configure(text="Sie müssen eine\n Zahl eingeben.")
 but1=Button(master,text="^Hoch",command=ho).place(x=1273,y=154)
-msg=Message(master,text="Abkürzungen")
-msg.config(bg="red",fg="green",font=("Arial",13),width=100)
-msg.place(x=1210,y=240)
-abkur=Entry(master)
-abkur.place(x=1203,y=270)
-bedeut=Label(master,text="Bedeutung:")
-def such():
-    abkutte=str(abkur.get())
-    if abkutte=="afrikan.":
-        bedeut.configure(text="afrikanisch")
-    elif abkutte=="Abg.":
-        bedeut.configure(text="Abgeordnete(r)")
-    elif abkutte=="Abh.":
-        bedeut.configure(text="Abhandlung")
-    elif abkutte=="":
-        bedeut.configure(text="")
-    elif abkutte=="":
-        bedeut.configure(text="")
-    elif abkutte=="":
-        bedeut.configure(text="")
-    elif abkutte=="":
-        bedeut.configure(text="")
-    elif abkutte=="Abb.":
-        bedeut.configure(text="Abbildung")
-    elif abkutte=="Abf.":
-        bedeut.configure(text="Abfahrt")
-    elif abkutte=="abds.":
-        bedeut.configure(text="abends")
-    elif abkutte=="Abl." or abkutte=="abl.":
-        bedeut.configure(text="Ablativ (Lateinischer Fall)")
-    elif abkutte=="äqypt.":
-        bedeut.configure(text="ägyptisch")
-    elif abkutte=="Akk.":
-        bedeut.configure(text="Akkusativ (Fall)")
-    elif abkutte=="altgriech.":
-        bedeut.configure(text="altgriechisch")
-    elif abkutte=="altnord.":
-        bedeut.configure(text="altnordisch")
-    elif abkutte=="americ.":
-        bedeut.configure(text="amerikanisch")
-    elif abkutte=="aram.":
-        bedeut.configure(text="aramäisch")
-    elif abkutte=="angelsächs.":
-        bedeut.configure(text="angelsächsisch")
-    elif abkutte=="arab.":
-        bedeut.configure(text="arabisch")
-    elif abkutte=="Art.":
-        bedeut.configure(text="Artikel\n(Vorwort)")
-    elif abkutte=="austral.":
-        bedeut.configure(text="australisch")
-    elif abkutte=="aztex.":
-        bedeut.configure(text="aztekich")
-    elif abkutte=="nom." or abkutte=="Nom.":
-        bedeut.configure(text="Nominativ (Fall)")
-    elif abkutte=="bes.":
-        bedeut.configure(text="besonders")
-    elif abkutte=="Best.":
-        bedeut.configure(text="Bestimmung")
-    elif abkutte=="Bez.":
-        bedeut.configure(text="Bezeichnung")
-    elif abkutte=="bildl.":
-        bedeut.configure(text="bildlich")
-    elif abkutte=="Bio.":
-        bedeut.configure(text="Biologie")
-    elif abkutte=="Bot.":
-        bedeut.configure(text="Botanik")
-    elif abkutte=="breton.":
-        bedeut.configure(text="bretonisch")
-    elif abkutte=="Bruchz.":
-        bedeut.configure(text="Bruchzahl")
-    elif abkutte=="Bw.":
-        bedeut.configure(text="Bewohner")
-    elif abkutte=="bzw.":
-        bedeut.configure(text="beziehungsweise")
-    elif abkutte=="bsp.":
-        bedeut.configure(text="beispielsweise/\nBeispiel")
-    elif abkutte=="chines.":
-        bedeut.configure(text="chinisisch")
-    elif abkutte=="dän.":
-        bedeut.configure(text="dänisch")
-    elif abkutte=="Dat.":
-        bedeut.configure(text="Dativ (Fall)")
-    elif abkutte=="demonstr.":
-        bedeut.configure(text="demonstrativ\n(hinweisend)")
-    elif abkutte=="d.h.":
-        bedeut.configure(text="das heißt")
-    elif abkutte=="dt." or abkutte=="deu.":
-        bedeut.configure(text="deutsch")
-    elif abkutte=="engl." or abkutte=="eng.":
-        bedeut.configure(text="englisch")
-    elif abkutte=="etc.":
-        bedeut.configure(text="et cetera (usw.)")
-    elif abkutte=="Ew.":
-        bedeut.configure(text="Einwohner")
-    elif abkutte=="f.":
-        bedeut.configure(text="für")
-    elif abkutte=="fachspr.":
-        bedeut.configure(text="fachsprachlich")
-    elif abkutte=="finn.":
-        bedeut.configure(text="finnisch")
-    elif abkutte=="franz.":
-        bedeut.configure(text="französisch")
-    elif abkutte=="Gastr.":
-        bedeut.configure(text="Gastronomie")
-    elif abkutte=="Gen." or abkutte=="gen.":
-        bedeut.configure(text="Genitiv (Fall)")
-    elif abkutte=="Geol.":
-        bedeut.configure(text="Geologie")
-    elif abkutte=="german.":
-        bedeut.configure(text="germanisch")
-    elif abkutte=="Ggs.":
-        bedeut.configure(text="Gegensatz")
-    elif abkutte=="gramm.":
-        bedeut.configure(text="grammatikalisch")
-    elif abkutte=="griech.":
-        bedeut.configure(text="griechisch")
-    elif abkutte=="ggf." or abkutte=="Ggf.":
-        bedeut.configure(text="gegebenenfalls")
-    elif abkutte=="hebr.":
-        bedeut.configure(text="hebräisch")
-    elif abkutte=="hist.":
-        bedeut.configure(text="historisch")
-    elif abkutte=="i. Ggs." or abkutte=="i.Ggs.":
-        bedeut.configure(text="im Gegensatz")
-    elif abkutte=="ind.":
-        bedeut.configure(text="indisch")
-    elif abkutte=="ind.":
-        bedeut.configure(text="indefinitiv \n(unbestimmt)")
-    elif abkutte=="indian.":
-        bedeut.configure(text="indianisch")
-    elif abkutte=="interj.":
-        bedeut.configure(text="Interjektion (Ausruf)")
-    elif abkutte=="interrog.":
-        bedeut.configure(text="interrogativ (fragend)")
-    elif abkutte=="ir.":
-        bedeut.configure(text="irisch")
-    elif abkutte=="iran.":
-        bedeut.configure(text="iranisch")
-    elif abkutte=="isländ.":
-        bedeut.configure(text="isländisch")
-    elif abkutte=="ital.":
-        bedeut.configure(text="italienisch")
-    elif abkutte=="jap.":
-        bedeut.configure(text="japanisch")
-    elif abkutte=="Jh.":
-        bedeut.configure(text="Jahrhundert")
-    elif abkutte=="jidd.":
-        bedeut.configure(text="jiddisch")
-    elif abkutte=="jmd.":
-        bedeut.configure(text="jemand")
-    elif abkutte=="jmdm.":
-        bedeut.configure(text="jemandem")
-    elif abkutte=="karib.":
-        bedeut.configure(text="karibisch")
-    elif abkutte=="kath.":
-        bedeut.configure(text="katholisch")
-    elif abkutte=="kaus.":
-        bedeut.configure(text="kausal (Adverbiale\nBestimmung des Grundes)")
-    elif abkutte=="kelt.":
-        bedeut.configure(text="keltisch")
-    elif abkutte=="kirgis.":
-        bedeut.configure(text="kirgisisch")
-    elif abkutte=="Konj.":
-        bedeut.configure(text="Konjunktion (Bindewort)")
-    elif abkutte=="kreol.":
-        bedeut.configure(text="kreolisch")
-    elif abkutte=="Kunstw.":
-        bedeut.configure(text="Kunstwort")
-    elif abkutte=="Kurzw.":
-        bedeut.configure(text="Kurzwort")
-    elif abkutte=="lat.":
-        bedeut.configure(text="lateinisch")
-    elif abkutte=="lok.":
-        bedeut.configure(text="lokal (Adverbiale \nBestimmung des Ortes)")
-    elif abkutte=="MA":
-        bedeut.configure(text="Mittelalter")
-    elif abkutte=="malai.":
-        bedeut.configure(text="malaiisch")
-    elif abkutte=="Math.":
-        bedeut.configure(text="Mathematik")
-    elif abkutte=="Med.":
-        bedeut.configure(text="Medizin")
-    elif abkutte=="mhd.":
-        bedeut.configure(text="mittelhochdeutsch")
-    elif abkutte=="mod.":
-        bedeut.configure(text="modal (Adverbiale Best.\nder Art und Weise)")
-    elif abkutte=="mong.":
-        bedeut.configure(text="mongolisch")
-    elif abkutte=="neugriech.":
-        bedeut.configure(text="neugriechisch")
-    elif abkutte=="niederdt.":
-        bedeut.configure(text="niederdeutsch")
-    elif abkutte=="niederl.":
-        bedeut.configure(text="niederländisch")
-    elif abkutte=="nlat.":
-        bedeut.configure(text="neulateinisch")
-    elif abkutte=="nordd.":
-        bedeut.configure(text="norddeutsch")
-    elif abkutte=="norw.":
-        bedeut.configure(text="norwegisch")
-    elif abkutte=="österr.":
-        bedeut.configure(text="österreichisch")
-    elif abkutte=="pers.":
-        bedeut.configure(text="persisch")
-    elif abkutte=="person.":
-        bedeut.configure(text="personal (persönlich)")
-    elif abkutte=="Philos.":
-        bedeut.configure(text="Philosophie")
-    elif abkutte=="Phys.":
-        bedeut.configure(text="Physik")
-    elif abkutte=="Pl." or abkutte=="Plur.":
-        bedeut.configure(text="Plural")
-    elif abkutte=="Pluralw.":
-        bedeut.configure(text="Pluralwort")
-    elif abkutte=="poln.":
-        bedeut.configure(text="polnisch")
-    elif abkutte=="polyn.":
-        bedeut.configure(text="polynesisch")
-    elif abkutte=="portugies.":
-        bedeut.configure(text="portugiesisch")
-    elif abkutte=="possess.":
-        bedeut.configure(text="possessiv\n(besitzanzeigend)")
-    elif abkutte=="Präp.":
-        bedeut.configure(text="Präposition\n(Verhältniswort)")
-    elif abkutte=="Pron.":
-        bedeut.configure(text="Pronomen")
-    elif abkutte=="Psychol.":
-        bedeut.configure(text="Psychologie")
-    elif abkutte=="Rechtsw.":
-        bedeut.configure(text="Rechtswissenschaft")
-    elif abkutte=="refl.":
-        bedeut.configure(text="reflexiv (rückbezüglich)")
-    elif abkutte=="relat.":
-        bedeut.configure(text="relativ")
-    elif abkutte=="roman.":
-        bedeut.configure(text="romanisch")
-    elif abkutte=="rumän.":
-        bedeut.configure(text="rumänisch")
-    elif abkutte=="russ.":
-        bedeut.configure(text="russisch")
-    elif abkutte=="s.":
-        bedeut.configure(text="Siehe (oder) Seite")
-    elif abkutte=="sanskr.":
-        bedeut.configure(text="sanskritisch")
-    elif abkutte=="schwed.":
-        bedeut.configure(text="schwedisch")
-    elif abkutte=="Sing.":
-        bedeut.configure(text="Singular")
-    elif abkutte=="span.":
-        bedeut.configure(text="spanisch")
-    elif abkutte=="südd.":
-        bedeut.configure(text="süddeutsch")
-    elif abkutte=="T.":
-        bedeut.configure(text="Trennung")
-    elif abkutte=="temp.":
-        bedeut.configure(text="temporal")
-    elif abkutte=="u.a.":
-        bedeut.configure(text="unter andere/\nunter anderem")
-    elif abkutte=="ugs.":
-        bedeut.configure(text="umgangssprachlich")
-    elif abkutte=="V.":
-        bedeut.configure(text="Verb")
-    elif abkutte=="Vors.":
-        bedeut.configure(text="Vorsilbe")
-    elif abkutte=="Wz.":
-        bedeut.configure(text="Wahrenzeichen")
-    elif abkutte=="zahlw.":
-        bedeut.configure(text="Zahlwort")
-    elif abkutte=="zw.":
-        bedeut.configure(text="zwischen")
-    elif abkutte=="Nr.":
-        bedeut.configure(text="Nummer")
-    else:
-        bedeut.configure(text="(nicht vorhanden)")
-bedeut.place(x=1213,y=290)
-suchb=Button(master,text="Nach Abkürzung suchen",command=such).place(x=1200,y=330)
 wörtby=open("wort.txt","r").readlines()
 tzuhg=""
 for tzuhgp in wörtby:
@@ -649,12 +371,13 @@ del(none[-1])
 txtc="".join(none)
 pfad.configure(text=txtc)
 pfad.place(x=1152,y=520)
-reda=open("exask.txt","r").readline()
-z=int()
-if reda=="an":
+z=int(1)
+oo=open("exask.txt","r").readline()
+if oo=="an":
     z=1
-elif reda=="aus":
+else:
     z=0
+
 def specialfunk():
     spectk=Tk()
     spectk.title("Special-Fuktions")
@@ -857,39 +580,30 @@ def specialfunk():
         okbut=Button(zutk,text="OK",command=ok,width=10).place(x=115,y=95)
     rechn_add=Button(spectk,text="Ausfürlicher Rechner",command=rechner_attribut_hinzufügung).place(x=2,y=2)
     def exitask():
-        oo=open("exask.txt","r").readline()
-        if oo=="an":
-            a=1
-            z=a
-        elif oo=="aus":
-            a=0
-            z=a
+        reda=open("exask.txt","r").readline()
         tki=Tk()
         tki.title("Ausgangsfrage")
         tki.geometry("300x150")
         Label(tki,text="Wollen sie gefragt werden,\nob das Programm geschlossen wird?").pack()
         def an():
-            a=1
-            oow=open("C:\\Users\\Privat\\Desktop\\exask.txt","w")
+            global z
+            oow=open("exask.txt","w")
             oow.write("an")
             oow.close()
-            global z
-            z=a
             lab.configure(text="an")
+            z=1
         def aus():
-            a=0
-            oow=open("C:\\Users\\Privat\\Desktop\\exask.txt","w")
+            global z
+            oow=open("exask.txt","w")
             oow.write("aus")
             lab.configure(text="aus")
-            global z
-            z=a
+            z=0
             oow.close()
+        lab=Label(tki)
+        lab.configure(text=reda)
+        lab.pack(side=BOTTOM)
         onB=Button(tki,text="An",command=an,width=5).pack(anchor=W)
         offB=Button(tki,text="Aus",command=aus,width=5).pack(anchor=W)
-        lab=Label(tki)
-        lab.configure(text=oo)
-        lab.pack(side=BOTTOM)
-        z=a
     exas=Button(spectk,text="Ausgangsfrage",command=exitask).place(x=2,y=29)
 Label(master,text="Beim Rechner könnte es \npassieren, dass die Zahl so \nhoch wird, dass sie nicht \nangezeigt werden kann.",justify=LEFT).place(x=1160,y=615)
 speciB=Button(master,text="SPECIAL",command=specialfunk).place(x=1311,y=660)
@@ -905,8 +619,15 @@ def closeask():
         master.destroy()
         sys.exit()
 def closeaske(event):
+    if master.attributes("-fullscreen")==True:
         master.attributes("-fullscreen",False)
+        F4andESC.config(text="Man beendet den Texteditor, indem man F4 drückt, während man ihn mit \"esc\" zu Vollbild macht.")
+        master.deiconify()
+    elif master.attributes("-fullscreen")==False:
+        master.attributes("-fullscreen",True)
+        F4andESC.config(text="Man beendet den Texteditor, indem man F4 drückt, während man ihn mit \"esc\" in Normalgröße macht.")
         master.deiconify()
 master.protocol("WM_DELETE_WINDOW",closeask)
 master.bind("<Escape>",closeaske)
+F4andESC.place(x=350,y=730)
 mainloop()
